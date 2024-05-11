@@ -4,6 +4,7 @@ import { ListObjects } from "../../components/ListObjetcts";
 import SearchBar from "Frontend/components/SearchBar";
 import WidgetPrincipal from "../../components/WidgetPrincipal";
 import Departamento from "Frontend/generated/com/example/application/entity/Departamento";
+import WidgetAllDepartments from "Frontend/components/WidgetAllDepartments";
 
 export default function WeatherPage() {
     const [climaInfo, setClimaInfo] = useState<Departamento>()
@@ -16,6 +17,7 @@ export default function WeatherPage() {
         <SearchBar setClima={updateClimaInfo}/>
         <WidgetPrincipal />
         {/* <ListObjects items={items} /> */}
+          <WidgetAllDepartments/>
       </div>
     </>
   );
