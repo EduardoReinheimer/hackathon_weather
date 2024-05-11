@@ -24,4 +24,5 @@ public class PronosticoExtendido {
     @JsonProperty("probabilidad_precipitacion")
     private double probabilidadPrecipitacion;
     private Lluvia lluvia;
+    private TiposSituacionClima tiposSituacionClima;
 }
