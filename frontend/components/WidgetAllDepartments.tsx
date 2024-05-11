@@ -28,9 +28,17 @@ export default function WidgetAllDepartments(params : ParamsWidgetAllDepartments
                             return (
                                 <HorizontalLayout>
                                     {departamento.pronostico_extendido_list[0]?.tiposSituacionClima == TiposSituacionClima.OPTIMO &&
-                                    <>
-                                    </>
+                                    <h4 style={{backgroundColor: 'green', borderRadius:'25%', marginRight: '0.5rem'}}>
+                                    </h4>
                                         }
+                                    {departamento.pronostico_extendido_list[0]?.tiposSituacionClima == TiposSituacionClima.PELIGRO &&
+                                        <h4 style={{backgroundColor: 'red', borderRadius:'25%', marginRight: '0.5rem'}}>
+                                        </h4>
+                                    }
+                                    {departamento.pronostico_extendido_list[0]?.tiposSituacionClima == TiposSituacionClima.PRECAUCION &&
+                                        <h4 style={{backgroundColor: 'yellow', borderRadius:'25%', marginRight: '0.5rem'}}>
+                                        </h4>
+                                    }
                                     <VerticalLayout>
                                         <h2>
                                             {departamento.nombre}
