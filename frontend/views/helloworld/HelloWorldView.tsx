@@ -9,6 +9,7 @@ export default function HelloWorldView() {
 
   return (
     <>
+        <h1>Hola es una prueba</h1>
       <section className="flex p-m gap-m items-end">
         <TextField
           label="Your name"
