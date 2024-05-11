@@ -17,8 +17,7 @@ interface ParamsSearchBar{
 export default function SearchBar(params:ParamsSearchBar) {
   const [searchText, setSearchText] = useState("");
   const [checked, setChecked] = useState(false);
-  const [typeTemperatureType, setTypeTemperatureType] =
-    useState<TypeTemperature>(TypeTemperature.CELSIUS);
+  const [typeTemperatureType, setTypeTemperatureType] = useState<TypeTemperature>(TypeTemperature.CELSIUS);
   const handleTemperatureChange = (newType: TypeTemperature) => {
     setTypeTemperatureType(newType);
   };
@@ -47,7 +46,6 @@ export default function SearchBar(params:ParamsSearchBar) {
 
           {/* Search Button */}
           <Button theme="primary" style={{ alignSelf: "center" }} onClick={() =>{
-            if(searchText)
             if(typeTemperatureType == TypeTemperature.FAHRENHEIT) {
               ClimaEndpoint.getPronostico(TypeTemperature.FAHRENHEIT).then((v) =>{
                 params.setClima(v)
