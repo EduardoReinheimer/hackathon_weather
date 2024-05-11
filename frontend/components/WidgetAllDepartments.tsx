@@ -7,6 +7,7 @@ import {GridColumn} from "@hilla/react-components/GridColumn";
 import {VerticalLayout} from "@hilla/react-components/VerticalLayout.js";
 import {ClimaEndpoint} from "Frontend/generated/endpoints";
 import TypeTemperature from "Frontend/generated/com/example/application/entity/TypeTemperature";
+import TiposSituacionClima from "Frontend/generated/com/example/application/entity/TiposSituacionClima";
 
 interface  ParamsWidgetAllDepartments{
     typeTemperature: TypeTemperature;
@@ -21,11 +22,15 @@ export default function WidgetAllDepartments(params : ParamsWidgetAllDepartments
     return(
         <>
             <HorizontalLayout className={styles.container} style={{backgroundColor:"#cfd4fe"}}>
-                <Grid items={climaDepartamentos}>
-                    <GridColumn>
+                <Grid items={climaDepartamentos} style={{backgroundColor:"#cfd4fe"}} allRowsVisible>
+                    <GridColumn style={{backgroundColor:"#cfd4fe"}}>
                         {({ item: departamento }) => {
                             return (
                                 <HorizontalLayout>
+                                    {departamento.pronostico_extendido_list[0]?.tiposSituacionClima == TiposSituacionClima.OPTIMO &&
+                                    <>
+                                    </>
+                                        }
                                     <VerticalLayout>
                                         <h2>
                                             {departamento.nombre}
@@ -34,9 +39,8 @@ export default function WidgetAllDepartments(params : ParamsWidgetAllDepartments
                                             {departamento.pronostico_extendido_list[0].clima[0].description}
                                         </h4>
                                     </VerticalLayout>
-
-                                    <h1>
-                                        {departamento.pronostico_extendido_list[0].main.temp}
+                                    <h1 style={{marginLeft: 'auto', marginRight:'0'}}>
+                                        {departamento.pronostico_extendido_list[0].main.temp} °C
                                     </h1>
                                 </HorizontalLayout>
                             )}}
