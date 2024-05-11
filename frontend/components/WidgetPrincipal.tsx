@@ -47,8 +47,12 @@ export default function WidgetPrincipal() {
             {/* Humedad */}
             <img src={icon} width={20} height={20}></img>
             <span>Humedad</span>
-            <span>{``}</span>
+            <span>{`54%`}</span>
             <span>|</span>
+            {/* Precipitaciones */}
+            <img src={icon} width={20} height={20}></img>
+            <span>Precipitaciones</span>
+            <span>{`0.2%`}</span>
           </HorizontalLayout>
         </VerticalLayout>
       </div>
