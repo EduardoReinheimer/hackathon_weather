@@ -9,18 +9,21 @@ import typeTemperature from "Frontend/generated/com/example/application/entity/T
 import TypeTemperature from "Frontend/generated/com/example/application/entity/TypeTemperature";
 
 export default function WeatherPage() {
-    const [climaInfo, setClimaInfo] = useState<Departamento>()
-    const [typeTemperature, setTypeTemperature] = useState(TypeTemperature.CELSIUS)
-    function updateClimaInfo(climaDepartamento: Departamento){
-        setClimaInfo(climaDepartamento)
-    }
+  const [climaInfo, setClimaInfo] = useState<Departamento>();
+  const [typeTemperature, setTypeTemperature] = useState(
+    TypeTemperature.CELSIUS
+  );
+  function updateClimaInfo(climaDepartamento: Departamento) {
+    setClimaInfo(climaDepartamento);
+  }
   return (
     <>
       <div className="weather-container" style={{ padding: "15px" }}>
-        <SearchBar setClima={updateClimaInfo}/>
-        <WidgetPrincipal />
+        <SearchBar setClima={updateClimaInfo} />
+        {climaInfo ? <WidgetPrincipal obj={climaInfo} /> : null}
         {/* <ListObjects items={items} /> */}
-          <WidgetAllDepartments typeTemperature={typeTemperature}/>
+
+        <WidgetAllDepartments typeTemperature={typeTemperature} />
       </div>
     </>
   );
