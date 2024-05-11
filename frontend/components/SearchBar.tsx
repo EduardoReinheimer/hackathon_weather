@@ -1,23 +1,25 @@
-import { Button } from "@hilla/react-components/Button.js";
-import { FormLayout } from "@hilla/react-components/FormLayout.js";
-import { HorizontalLayout } from "@hilla/react-components/HorizontalLayout.js";
-import { Icon } from "@hilla/react-components/Icon.js";
-import { TextField } from "@hilla/react-components/TextField.js";
-import { VerticalLayout } from "@hilla/react-components/VerticalLayout.js";
-import { useState } from "react";
+import {Button} from "@hilla/react-components/Button.js";
+import {FormLayout} from "@hilla/react-components/FormLayout.js";
+import {TextField} from "@hilla/react-components/TextField.js";
+import {VerticalLayout} from "@hilla/react-components/VerticalLayout.js";
+import {useState} from "react";
 import icon from "../../src/main/resources/META-INF/resources/images/weather.png";
+import ClimaRespuesta from "Frontend/generated/com/example/application/entity/ClimaRespuesta";
+import {ClimaEndpoint} from "Frontend/generated/endpoints";
+import TypeTemperature from "Frontend/generated/com/example/application/entity/TypeTemperature";
+import {HorizontalLayout} from "@hilla/react-components/HorizontalLayout.js";
 
-enum CheckTypeTemperature {
-  Fahrenheit,
-  Celsius,
+
+interface ParamsSearchBar{
+  setClima: (clima: ClimaRespuesta) => {}
 }
 
-export default function SearchBar() {
+export default function SearchBar(params:ParamsSearchBar) {
   const [searchText, setSearchText] = useState("");
   const [checked, setChecked] = useState(false);
   const [typeTemperatureType, setTypeTemperatureType] =
-    useState<CheckTypeTemperature>(CheckTypeTemperature.Celsius);
-  const handleTemperatureChange = (newType: CheckTypeTemperature) => {
+    useState<TypeTemperature>(TypeTemperature.CELSIUS);
+  const handleTemperatureChange = (newType: TypeTemperature) => {
     setTypeTemperatureType(newType);
   };
 
@@ -44,7 +46,18 @@ export default function SearchBar() {
           />
 
           {/* Search Button */}
-          <Button theme="primary" style={{ alignSelf: "center" }}>
+          <Button theme="primary" style={{ alignSelf: "center" }} onClick={() =>{
+            if(searchText)
+            if(typeTemperatureType == TypeTemperature.FAHRENHEIT) {
+              ClimaEndpoint.getPronostico(TypeTemperature.FAHRENHEIT).then((v) =>{
+                params.setClima(v)
+              })
+            }else if(typeTemperatureType == TypeTemperature.CELSIUS) {
+              ClimaEndpoint.getPronostico(TypeTemperature.CELSIUS).then((v) => {
+                params.setClima(v)
+              })
+            }
+          }}>
             Buscar
           </Button>
 
@@ -54,24 +67,24 @@ export default function SearchBar() {
           >
             <Button
               theme={
-                typeTemperatureType === CheckTypeTemperature.Celsius
+                typeTemperatureType === TypeTemperature.CELSIUS
                   ? "primary"
                   : "secondary"
               }
               onClick={() =>
-                handleTemperatureChange(CheckTypeTemperature.Celsius)
+                handleTemperatureChange(TypeTemperature.CELSIUS)
               }
             >
               C
             </Button>
             <Button
               theme={
-                typeTemperatureType === CheckTypeTemperature.Fahrenheit
+                typeTemperatureType === TypeTemperature.FAHRENHEIT
                   ? "primary"
                   : "secondary"
               }
               onClick={() =>
-                handleTemperatureChange(CheckTypeTemperature.Fahrenheit)
+                handleTemperatureChange(TypeTemperature.FAHRENHEIT)
               }
             >
               F
