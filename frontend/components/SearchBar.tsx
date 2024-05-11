@@ -4,14 +4,14 @@ import {TextField} from "@hilla/react-components/TextField.js";
 import {VerticalLayout} from "@hilla/react-components/VerticalLayout.js";
 import {useState} from "react";
 import icon from "../../src/main/resources/META-INF/resources/images/weather.png";
-import ClimaRespuesta from "Frontend/generated/com/example/application/entity/ClimaRespuesta";
 import {ClimaEndpoint} from "Frontend/generated/endpoints";
 import TypeTemperature from "Frontend/generated/com/example/application/entity/TypeTemperature";
 import {HorizontalLayout} from "@hilla/react-components/HorizontalLayout.js";
+import Departamento from "Frontend/generated/com/example/application/entity/Departamento";
 
 
 interface ParamsSearchBar{
-  setClima: (clima: ClimaRespuesta) => {}
+  setClima: (climaDepartamento: Departamento) => void
 }
 
 export default function SearchBar(params:ParamsSearchBar) {

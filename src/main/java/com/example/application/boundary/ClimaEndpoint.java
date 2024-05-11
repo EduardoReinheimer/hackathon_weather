@@ -17,4 +17,8 @@ public class ClimaEndpoint {
     public Departamento getPronostico(TypeTemperature typeTemperature){
         return climaController.getClimaInfo(typeTemperature).getDepartamentos().getFirst();
     }
+//    @AnonymousAllowed
+//    public Departamento getPronostico(TypeTemperature typeTemperature){
+//        return climaController.getClimaInfo(typeTemperature).getDepartamentos().getFirst();
+//    }
 }
