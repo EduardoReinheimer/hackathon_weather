@@ -1,5 +1,5 @@
 import {HorizontalLayout} from "@hilla/react-components/HorizontalLayout.js";
-import styles from "./WidgetPrincipal.module.css";
+import styles from "./Styles.module.css";
 
 export default function WidgetAllDepartments() {
     return(
