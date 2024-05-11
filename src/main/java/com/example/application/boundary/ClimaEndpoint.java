@@ -9,6 +9,8 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Endpoint
 public class ClimaEndpoint {
     @Autowired
@@ -16,6 +18,10 @@ public class ClimaEndpoint {
     @AnonymousAllowed
     public Departamento getPronostico(TypeTemperature typeTemperature){
         return climaController.getClimaInfo(typeTemperature).getDepartamentos().getFirst();
+    }
+    @AnonymousAllowed
+    public List<Departamento> getPronoticoTodosLosDepartamentos(TypeTemperature typeTemperature){
+        return climaController.getClimaInfo(typeTemperature).getDepartamentos();
     }
 //    @AnonymousAllowed
 //    public Departamento getPronostico(TypeTemperature typeTemperature){
